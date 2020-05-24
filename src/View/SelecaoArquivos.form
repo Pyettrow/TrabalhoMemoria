@@ -75,7 +75,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="jBProximaTela" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="jBPorcessaArquivo1" min="-2" pref="104" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -91,7 +91,7 @@
                       <Component id="jBSelecionarArquivo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jBProximaTela" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jBPorcessaArquivo1" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -106,12 +106,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSelecionarArquivoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jBProximaTela">
+        <Component class="javax.swing.JButton" name="jBPorcessaArquivo1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Processar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBProximaTelaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPorcessaArquivo1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFCaminhoArquivo">
@@ -151,7 +151,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                                          <Component id="jBProximaTela2" min="-2" pref="104" max="-2" attributes="0"/>
+                                          <Component id="jBProcessaArquivo2" min="-2" pref="104" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jRBBest" min="-2" max="-2" attributes="0"/>
@@ -186,7 +186,7 @@
                       <Component id="jRBCircular" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jBProximaTela2" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jBProcessaArquivo2" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -201,12 +201,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSelecionarArquivo2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jBProximaTela2">
+        <Component class="javax.swing.JButton" name="jBProcessaArquivo2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Processar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBProximaTela2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBProcessaArquivo2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFCaminhoArquivo2">

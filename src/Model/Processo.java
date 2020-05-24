@@ -19,9 +19,11 @@ public class Processo {
     private long fimMemoriaAlocada;
     private boolean finalizado = false;
 
-    public Processo(int id, long qtdMemoriaSolicitada) {
+    public Processo(int id, long qtdMemoriaSolicitada, long inicioMemoriaAlocada, long fimMemoriaAlocada) {
         this.id = id;
         this.qtdMemoriaSolicitada = qtdMemoriaSolicitada;
+        this.inicioMemoriaAlocada = inicioMemoriaAlocada;
+        this.fimMemoriaAlocada = fimMemoriaAlocada;
     }
 
     public long getFimMemoriaAlocada() {

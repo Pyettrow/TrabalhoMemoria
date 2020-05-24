@@ -26,7 +26,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         jTFCaminhoArquivo2.setEditable(false);
         jTFCaminhoArquivo2.setEnabled(false);
         jBSelecionarArquivo2.setEnabled(false);
-        jBProximaTela2.setEnabled(false);
+        jBProcessaArquivo2.setEnabled(false);
         jBVoltar.setEnabled(false);
         jRBBest.setEnabled(false);
         jRBCircular.setEnabled(false);
@@ -53,11 +53,11 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jBSelecionarArquivo = new javax.swing.JButton();
-        jBProximaTela = new javax.swing.JButton();
+        jBPorcessaArquivo1 = new javax.swing.JButton();
         jTFCaminhoArquivo = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jBSelecionarArquivo2 = new javax.swing.JButton();
-        jBProximaTela2 = new javax.swing.JButton();
+        jBProcessaArquivo2 = new javax.swing.JButton();
         jTFCaminhoArquivo2 = new javax.swing.JTextField();
         jBVoltar = new javax.swing.JButton();
         jRBFifo = new javax.swing.JRadioButton();
@@ -77,10 +77,10 @@ public class SelecaoArquivos extends javax.swing.JFrame {
             }
         });
 
-        jBProximaTela.setText("Processar");
-        jBProximaTela.addActionListener(new java.awt.event.ActionListener() {
+        jBPorcessaArquivo1.setText("Processar");
+        jBPorcessaArquivo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBProximaTelaActionPerformed(evt);
+                jBPorcessaArquivo1ActionPerformed(evt);
             }
         });
 
@@ -99,7 +99,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                         .addComponent(jBSelecionarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
-                        .addComponent(jBProximaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBPorcessaArquivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -110,7 +110,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                     .addComponent(jTFCaminhoArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBSelecionarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBProximaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBPorcessaArquivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -123,10 +123,10 @@ public class SelecaoArquivos extends javax.swing.JFrame {
             }
         });
 
-        jBProximaTela2.setText("Processar");
-        jBProximaTela2.addActionListener(new java.awt.event.ActionListener() {
+        jBProcessaArquivo2.setText("Processar");
+        jBProcessaArquivo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBProximaTela2ActionPerformed(evt);
+                jBProcessaArquivo2ActionPerformed(evt);
             }
         });
 
@@ -168,7 +168,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(21, 21, 21)
-                                        .addComponent(jBProximaTela2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jBProcessaArquivo2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jRBBest)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -192,7 +192,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                     .addComponent(jRBWorst)
                     .addComponent(jRBCircular))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBProximaTela2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBProcessaArquivo2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -233,28 +233,32 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBSelecionarArquivoActionPerformed
 
-    private void jBProximaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProximaTelaActionPerformed
+    /**
+     * Aqui realiza o tratamento do primeiro botão de processar, que é composto 
+     * pela classe para manipular o arquivo, para realizar a leitura do txt e 
+     * criação dos processos no txt memória.
+     * @param evt 
+     */
+    private void jBPorcessaArquivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPorcessaArquivo1ActionPerformed
         if(!jTFCaminhoArquivo.getText().isEmpty()){
             
             Model.ManipularArquivo manu = new Model.ManipularArquivo();
-            
-            manu.salvarDados(1);
+            manu.salvarDados(); // Salvando os processos "X" no txt memoria
             
             String localArquivo = jTFCaminhoArquivo.getText();
             memoriaRAM = manu.lerDados(localArquivo, 1);
-            
             
             JOptionPane.showMessageDialog(this, "Arquivo processado!");
             
             //Bloqueando os campos da primeira etapa
             jTFCaminhoArquivo.setEnabled(false);
             jBSelecionarArquivo.setEnabled(false);
-            jBProximaTela.setEnabled(false);
+            jBPorcessaArquivo1.setEnabled(false);
             
             //Liberando os itens do segundo arquivo.
             jTFCaminhoArquivo2.setEnabled(true);
             jBSelecionarArquivo2.setEnabled(true);
-            jBProximaTela2.setEnabled(true);
+            jBProcessaArquivo2.setEnabled(true);
             jBVoltar.setEnabled(true);
             jRBBest.setEnabled(true);
             jRBCircular.setEnabled(true);
@@ -264,7 +268,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione o TXT de entrada.");
             jBSelecionarArquivo.requestFocus();
         }
-    }//GEN-LAST:event_jBProximaTelaActionPerformed
+    }//GEN-LAST:event_jBPorcessaArquivo1ActionPerformed
 
     private void jBSelecionarArquivo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarArquivo2ActionPerformed
         Model.SelecionarArquivo select = new Model.SelecionarArquivo();
@@ -277,7 +281,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBSelecionarArquivo2ActionPerformed
 
-    private void jBProximaTela2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProximaTela2ActionPerformed
+    private void jBProcessaArquivo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessaArquivo2ActionPerformed
         if(!jTFCaminhoArquivo2.getText().isEmpty()){
             if(jRBFifo.isSelected()){
                 
@@ -294,16 +298,16 @@ public class SelecaoArquivos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione o TXT de entrada.");
             jBSelecionarArquivo2.requestFocus();
         }
-    }//GEN-LAST:event_jBProximaTela2ActionPerformed
+    }//GEN-LAST:event_jBProcessaArquivo2ActionPerformed
 
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
         jTFCaminhoArquivo.setEnabled(true);
         jBSelecionarArquivo.setEnabled(true);
-        jBProximaTela.setEnabled(true);
+        jBPorcessaArquivo1.setEnabled(true);
 
         jTFCaminhoArquivo2.setEnabled(false);
         jBSelecionarArquivo2.setEnabled(false);
-        jBProximaTela2.setEnabled(false);
+        jBProcessaArquivo2.setEnabled(false);
         jBVoltar.setEnabled(false);
         jRBBest.setEnabled(false);
         jRBCircular.setEnabled(false);
@@ -353,8 +357,8 @@ public class SelecaoArquivos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jBProximaTela;
-    private javax.swing.JButton jBProximaTela2;
+    private javax.swing.JButton jBPorcessaArquivo1;
+    private javax.swing.JButton jBProcessaArquivo2;
     private javax.swing.JButton jBSelecionarArquivo;
     private javax.swing.JButton jBSelecionarArquivo2;
     private javax.swing.JButton jBVoltar;
