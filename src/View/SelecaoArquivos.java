@@ -243,7 +243,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         if(!jTFCaminhoArquivo.getText().isEmpty()){
             
             Model.ManipularArquivo manu = new Model.ManipularArquivo();
-            manu.salvarDados(); // Salvando os processos "X" no txt memoria
+            manu.salvarDados(1,null); // Salvando os processos "X" no txt memoria
             
             String localArquivo = jTFCaminhoArquivo.getText();
             memoriaRAM = manu.lerDados(localArquivo, 1);

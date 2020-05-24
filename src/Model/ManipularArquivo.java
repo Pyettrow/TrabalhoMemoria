@@ -46,6 +46,11 @@ public class ManipularArquivo {
                     long inicioMemoriaAlocada = proximaMemoria;
                     long fimMemoriaAlocada = proximaMemoria+qtdMemoriaSolicitada;
                     proximaMemoria = fimMemoriaAlocada+10000;
+                    
+                    salvarDados(2, "Criado porcesso "+id+", com "+qtdMemoriaSolicitada+"kb."
+                            + " Alocado de "+inicioMemoriaAlocada+" até "+fimMemoriaAlocada);
+                    
+                    
                     Processo newProcesso = new Processo(id, qtdMemoriaSolicitada, inicioMemoriaAlocada, fimMemoriaAlocada);
                     listProcessos.add(newProcesso);
                     linha = bf.readLine();
@@ -65,21 +70,31 @@ public class ManipularArquivo {
     /**
      * Para fazer a gravação no arquivo é necessário chamar o método passando o 
      * caminho do arquivo que deseje salvar, somente txt. Verificar qual o tipo 
-     * de arquivo que precisrá salvar.    
+     * de arquivo que precisrá salvar.   
+     * @param processo - (1) é para mexer no arquivo memoria e (2) mexer no 
+     * arquivo log
+     * @param texto - Enviar texto para salvar no arquivo.(Somente para o 1)
      */
-    public void salvarDados(){
+    public void salvarDados(int processo, String texto){
         try {
-            File file = new File("memoria.txt");
-            if(file.exists()){
-                if(!file.delete()){
-                    JOptionPane.showMessageDialog(null, "Não foi possivel apagar o arquivo memoria.txt");
+            if(processo == 1){
+                File file = new File("memoria.txt");
+                if(file.exists()){
+                    if(!file.delete()){
+                        JOptionPane.showMessageDialog(null, "Não foi possivel apagar o arquivo memoria.txt");
+                    }
                 }
+                FileWriter fw = new FileWriter("memoria.txt");
+                for (int i = 0; i < 50; i++) {
+                    fw.write("X\r\n");
+                }
+                fw.close();
+            }else{
+                File file = new File("log.txt");
+                FileWriter fw = new FileWriter(file,true);
+                fw.write(texto+"\r\n");
+                fw.close();
             }
-            FileWriter fw = new FileWriter("memoria.txt");
-            for (int i = 0; i < 50; i++) {
-                fw.write("X\r\n");
-            }
-            fw.close();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Problema na escrita do artquivo, ex!");
         }
