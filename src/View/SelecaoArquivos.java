@@ -11,23 +11,29 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author William
  */
-public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
-
-    /**
-     * Creates new form App
-     */
-    public AppSelecaoPrimeiroArquivo() {
-        initComponents();
+public class SelecaoArquivos extends javax.swing.JFrame {
+    
+    // Criano array que irá referencia a memória
+    ArrayList<Model.Processo> memoriaRAM = new ArrayList();
+    
+    public SelecaoArquivos() {
+        initComponents();        
+        
+        // Desabilitando os campos do segundo arquivo
         jTFCaminhoArquivo.setEditable(false);
         jTFCaminhoArquivo2.setEditable(false);
         jTFCaminhoArquivo2.setEnabled(false);
         jBSelecionarArquivo2.setEnabled(false);
         jBProximaTela2.setEnabled(false);
         jBVoltar.setEnabled(false);
+        jRBBest.setEnabled(false);
+        jRBCircular.setEnabled(false);
+        jRBFifo.setEnabled(false);
+        jRBWorst.setEnabled(false);
         
+        // Adicionando os RadionButtons ao RadioGroup
         buttonGroup1.add(jRBFifo);
         buttonGroup1.add(jRBBest);
         buttonGroup1.add(jRBWorst);
@@ -85,14 +91,14 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
                         .addComponent(jTFCaminhoArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBSelecionarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
+                        .addGap(96, 96, 96)
                         .addComponent(jBProximaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -146,30 +152,30 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBVoltar)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jBVoltar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jTFCaminhoArquivo2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBSelecionarArquivo2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jRBFifo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(8, 8, 8)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jBProximaTela2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTFCaminhoArquivo2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBSelecionarArquivo2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jRBBest)
+                                .addComponent(jRBFifo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRBWorst)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRBCircular)))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jBProximaTela2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jRBBest)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jRBWorst)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jRBCircular)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,10 +202,10 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,17 +222,13 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Botão que chama a tela para selecionar o arquivo TXT além de chamara o 
-     * método da classe ManipularArquivo, que realizar a leitura do arquivo 
-     * selecionado e o transforma em um ArrayList.
+     * Botão que chama a tela para selecionar o arquivo TXT.
      * @param evt 
      */
     private void jBSelecionarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarArquivoActionPerformed
         
-        Model.SelecionarArquivo selecArq = new Model.SelecionarArquivo();
-        Model.ManipularArquivo manu = new Model.ManipularArquivo();
-        File localArquivo = selecArq.localizarArquivo();
-        ArrayList memoria = manu.lerDados(localArquivo);
+        Model.SelecionarArquivo selecionarArquivo = new Model.SelecionarArquivo();
+        File localArquivo = selecionarArquivo.localizarArquivo();
         jTFCaminhoArquivo.setText(localArquivo.toString());
         
     }//GEN-LAST:event_jBSelecionarArquivoActionPerformed
@@ -234,17 +236,30 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
     private void jBProximaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProximaTelaActionPerformed
         if(!jTFCaminhoArquivo.getText().isEmpty()){
             
+            Model.ManipularArquivo manu = new Model.ManipularArquivo();
+            
+            manu.salvarDados(1);
+            
+            String localArquivo = jTFCaminhoArquivo.getText();
+            memoriaRAM = manu.lerDados(localArquivo, 1);
+            
+            
             JOptionPane.showMessageDialog(this, "Arquivo processado!");
             
-            //Liberando os itens do segundo arquivo.
+            //Bloqueando os campos da primeira etapa
             jTFCaminhoArquivo.setEnabled(false);
             jBSelecionarArquivo.setEnabled(false);
             jBProximaTela.setEnabled(false);
             
+            //Liberando os itens do segundo arquivo.
             jTFCaminhoArquivo2.setEnabled(true);
             jBSelecionarArquivo2.setEnabled(true);
             jBProximaTela2.setEnabled(true);
             jBVoltar.setEnabled(true);
+            jRBBest.setEnabled(true);
+            jRBCircular.setEnabled(true);
+            jRBFifo.setEnabled(true);
+            jRBWorst.setEnabled(true);
         }else{
             JOptionPane.showMessageDialog(this, "Selecione o TXT de entrada.");
             jBSelecionarArquivo.requestFocus();
@@ -258,7 +273,7 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
         File localArquivo = select.localizarArquivo();
         jTFCaminhoArquivo2.setText(localArquivo.toString());
         
-        manu.lerDados(localArquivo);
+        //manu.lerDados(localArquivo);
         
     }//GEN-LAST:event_jBSelecionarArquivo2ActionPerformed
 
@@ -283,13 +298,18 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
 
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
         jTFCaminhoArquivo.setEnabled(true);
-            jBSelecionarArquivo.setEnabled(true);
-            jBProximaTela.setEnabled(true);
-            
-            jTFCaminhoArquivo2.setEnabled(false);
-            jBSelecionarArquivo2.setEnabled(false);
-            jBProximaTela2.setEnabled(false);
-            jBVoltar.setEnabled(false);
+        jBSelecionarArquivo.setEnabled(true);
+        jBProximaTela.setEnabled(true);
+
+        jTFCaminhoArquivo2.setEnabled(false);
+        jBSelecionarArquivo2.setEnabled(false);
+        jBProximaTela2.setEnabled(false);
+        jBVoltar.setEnabled(false);
+        jRBBest.setEnabled(false);
+        jRBCircular.setEnabled(false);
+        jRBFifo.setEnabled(false);
+        jRBWorst.setEnabled(false);
+        jTFCaminhoArquivo2.setText("");
     }//GEN-LAST:event_jBVoltarActionPerformed
 
     /**
@@ -309,21 +329,23 @@ public class AppSelecaoPrimeiroArquivo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AppSelecaoPrimeiroArquivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AppSelecaoPrimeiroArquivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AppSelecaoPrimeiroArquivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AppSelecaoPrimeiroArquivo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AppSelecaoPrimeiroArquivo().setVisible(true);
+                new SelecaoArquivos().setVisible(true);
             }
         });
     }
