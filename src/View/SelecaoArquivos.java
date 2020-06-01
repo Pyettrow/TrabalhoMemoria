@@ -38,6 +38,10 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         buttonGroup1.add(jRBBest);
         buttonGroup1.add(jRBWorst);
         buttonGroup1.add(jRBCircular);
+        
+        // Apagando arquivos para não manter info duplicados
+        Model.ManipularArquivo manip = new Model.ManipularArquivo();
+        manip.apagaTxts();
     }
 
     /**
@@ -243,10 +247,12 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         if(!jTFCaminhoArquivo.getText().isEmpty()){
             
             Model.ManipularArquivo manu = new Model.ManipularArquivo();
-            manu.salvarDados(1,null); // Salvando os processos "X" no txt memoria
+            manu.salvarDados(1,null,0); // Salvando os processos "X" no txt memoria
             
             String localArquivo = jTFCaminhoArquivo.getText();
             memoriaRAM = manu.lerDados(localArquivo, 1);
+            
+            atualizaMemoriaTxt();
             
             JOptionPane.showMessageDialog(this, "Arquivo processado!");
             
@@ -284,13 +290,13 @@ public class SelecaoArquivos extends javax.swing.JFrame {
     private void jBProcessaArquivo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessaArquivo2ActionPerformed
         if(!jTFCaminhoArquivo2.getText().isEmpty()){
             if(jRBFifo.isSelected()){
-                
+                JOptionPane.showMessageDialog(null, "Adicionar modo FIFO");
             }else if(jRBBest.isSelected()){
-                
+                JOptionPane.showMessageDialog(null, "Adicionar modo BEST");
             }else if(jRBWorst.isSelected()){
-                
+                JOptionPane.showMessageDialog(null, "Adicionar modo WORST");
             }else if(jRBCircular.isSelected()){
-                
+                JOptionPane.showMessageDialog(null, "Adicionar modo CIRCULAR");
             }else{
                 JOptionPane.showMessageDialog(this, "Selecione um modo de gerenciamente de memória.");
             }
@@ -316,37 +322,19 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         jTFCaminhoArquivo2.setText("");
     }//GEN-LAST:event_jBVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    public void atualizaMemoriaTxt(){
+        Model.ManipularArquivo maniPu = new Model.ManipularArquivo();
+        for (int i = 0; i < memoriaRAM.size(); i++) {
+            Model.Processo pro = memoriaRAM.get(i);
+            if(pro.getFinalizado() == true){
+                maniPu.salvarDados(1, "-----", pro.getQtdMemoriaSolicitada());
+            }else{
+                maniPu.salvarDados(1, " - "+pro.getId(), pro.getQtdMemoriaSolicitada());
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelecaoArquivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+    }
+    
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SelecaoArquivos().setVisible(true);

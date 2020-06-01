@@ -10,9 +10,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +21,13 @@ import javax.swing.JOptionPane;
  * @author William
  */
 public class ManipularArquivo {
+    
+    public void apagaTxts(){
+        File logTxt = new File("log.txt");
+        File memoriaTxt = new File("memoria.txt");
+        logTxt.delete();
+        memoriaTxt.delete();        
+    }
     
     /**
      * Para fazer a leitura do arquivo é necessário chamar o método passando o 
@@ -48,10 +56,13 @@ public class ManipularArquivo {
                     proximaMemoria = fimMemoriaAlocada+10000;
                     
                     salvarDados(2, "Criado porcesso "+id+", com "+qtdMemoriaSolicitada+"kb."
-                            + " Alocado de "+inicioMemoriaAlocada+" até "+fimMemoriaAlocada);
+                            + " Alocado de "+inicioMemoriaAlocada+" até "+fimMemoriaAlocada,0);
                     
+                    Processo newProcesso = new Processo(id, qtdMemoriaSolicitada, 
+                            inicioMemoriaAlocada, fimMemoriaAlocada);
                     
-                    Processo newProcesso = new Processo(id, qtdMemoriaSolicitada, inicioMemoriaAlocada, fimMemoriaAlocada);
+                    newProcesso.gerenciaProcesso(linhaLida);
+                    
                     listProcessos.add(newProcesso);
                     linha = bf.readLine();
                 }
@@ -61,8 +72,9 @@ public class ManipularArquivo {
             }else if(processo == 2){
                 return null;
             }
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Problema com a leitura do arquivo txt, ex!");
+            System.out.println(ex);
         }
         return listProcessos;
     }
@@ -71,32 +83,46 @@ public class ManipularArquivo {
      * Para fazer a gravação no arquivo é necessário chamar o método passando o 
      * caminho do arquivo que deseje salvar, somente txt. Verificar qual o tipo 
      * de arquivo que precisrá salvar.   
-     * @param processo - (1) é para mexer no arquivo memoria e (2) mexer no 
+     * @param processo (1) é para mexer no arquivo memoria e (2) mexer no 
      * arquivo log
-     * @param texto - Enviar texto para salvar no arquivo.(Somente para o 1)
+     * @param texto Enviar texto para salvar no arquivo.(Se for para o process)
+     * 1 passar ID do processo
+     * @param qtdMemoria Enviar somente para o PROCESSO 1, para saber quantas 
+     * vezes repitir o loop de salvar a memoria
      */
-    public void salvarDados(int processo, String texto){
+    public void salvarDados(int processo, String texto, long qtdMemoria){
         try {
             if(processo == 1){
                 File file = new File("memoria.txt");
-                if(file.exists()){
-                    if(!file.delete()){
-                        JOptionPane.showMessageDialog(null, "Não foi possivel apagar o arquivo memoria.txt");
+                FileWriter fw = new FileWriter("memoria.txt",true);
+                
+                if(texto == null){
+                    for (int i = 0; i < 50; i++) {
+                        fw.write("X\r\n");
                     }
-                }
-                FileWriter fw = new FileWriter("memoria.txt");
-                for (int i = 0; i < 50; i++) {
-                    fw.write("X\r\n");
+                }else{
+                    int memoria = 0;
+                    while(memoria < qtdMemoria){
+                        if(texto.equals("-----")){
+                            fw.write(texto+"\r\n");
+                        }else{
+                            fw.write("10000"+texto+"\r\n");
+                        }
+                        memoria += 10000;
+                    }
                 }
                 fw.close();
             }else{
                 File file = new File("log.txt");
                 FileWriter fw = new FileWriter(file,true);
-                fw.write(texto+"\r\n");
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+                Date date = new Date();
+                fw.write(dateFormat.format(date)+": "+texto+"\r\n");
                 fw.close();
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Problema na escrita do artquivo, ex!");
+            System.out.println(ex);
         }
     }
 }
