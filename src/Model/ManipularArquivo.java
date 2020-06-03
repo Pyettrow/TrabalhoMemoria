@@ -44,34 +44,42 @@ public class ManipularArquivo {
         
         try {
             FileReader reader = new FileReader(caminhoArquivo);
-            BufferedReader bf = new BufferedReader(reader);
-            if (processo == 1){
-                linha = bf.readLine();
-                while(linha != null){
-                    String [] linhaLida = linha.split("\\|");
-                    int id = Integer.parseInt(linhaLida[0]);
-                    long qtdMemoriaSolicitada = Long.parseLong(linhaLida[1]);
-                    long inicioMemoriaAlocada = proximaMemoria;
-                    long fimMemoriaAlocada = proximaMemoria+qtdMemoriaSolicitada;
+            BufferedReader bf = new BufferedReader(reader);            
+            linha = bf.readLine();
+            while(linha != null){
+                String [] linhaLida = linha.split("\\|");
+                int id = Integer.parseInt(linhaLida[0]);
+                long qtdMemoriaSolicitada = Long.parseLong(linhaLida[1]);
+                long inicioMemoriaAlocada = 0;
+                long fimMemoriaAlocada = 0;
+                /**
+                 * IF para validar processo 1 e 2. Quando for 1, já adiciona 
+                 * inicioMemoriaAlocada e fimMemoriaAlocada cfe os ultimos processos.
+                 */
+                if(processo == 1){ 
+                    inicioMemoriaAlocada = proximaMemoria;
+                    fimMemoriaAlocada = proximaMemoria+qtdMemoriaSolicitada;
                     proximaMemoria = fimMemoriaAlocada+10000;
-                    
-                    salvarDados(2, "Criado porcesso "+id+", com "+qtdMemoriaSolicitada+"kb."
-                            + " Alocado de "+inicioMemoriaAlocada+" até "+fimMemoriaAlocada,0);
-                    
-                    Processo newProcesso = new Processo(id, qtdMemoriaSolicitada, 
-                            inicioMemoriaAlocada, fimMemoriaAlocada);
-                    
-                    newProcesso.gerenciaProcesso(linhaLida);
-                    
-                    listProcessos.add(newProcesso);
-                    linha = bf.readLine();
+                }else if(processo == 2){                    
+                    inicioMemoriaAlocada = 0;
+                    fimMemoriaAlocada = 0;
                 }
+
+                Processo newProcesso = new Processo(id, qtdMemoriaSolicitada, 
+                        inicioMemoriaAlocada, fimMemoriaAlocada, linhaLida);
+                if(processo == 1){
+                    salvarDadosLog(1, "Criado processo "+newProcesso.getId()+", com "+newProcesso.getQtdMemoriaSolicitada()+"kb."
+                    + " Alocado de "+newProcesso.getInicioMemoriaAlocada()+" até "+newProcesso.getFimMemoriaAlocada());
+                    newProcesso.gerenciaProcesso();
+                }
+
+
+                listProcessos.add(newProcesso);
+                linha = bf.readLine();
+            }
                 
                 GerenciaMemoria gereMemoria = new GerenciaMemoria();
                 gereMemoria.organizaMemoria();
-            }else if(processo == 2){
-                return null;
-            }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Problema com a leitura do arquivo txt, ex!");
             System.out.println(ex);
@@ -80,46 +88,57 @@ public class ManipularArquivo {
     }
     
     /**
-     * Para fazer a gravação no arquivo é necessário chamar o método passando o 
-     * caminho do arquivo que deseje salvar, somente txt. Verificar qual o tipo 
-     * de arquivo que precisrá salvar.   
-     * @param processo (1) é para mexer no arquivo memoria e (2) mexer no 
-     * arquivo log
-     * @param texto Enviar texto para salvar no arquivo.(Se for para o process)
-     * 1 passar ID do processo
-     * @param qtdMemoria Enviar somente para o PROCESSO 1, para saber quantas 
-     * vezes repitir o loop de salvar a memoria
+     * Salva os processos e as alocações no txt memoria
+     * @param newProcesso Passar o processo que ira sabar os dados no memoria.txt
      */
-    public void salvarDados(int processo, String texto, long qtdMemoria){
+    public void salvarDadosMemoria(Processo newProcesso){
         try {
-            if(processo == 1){
-                File file = new File("memoria.txt");
-                FileWriter fw = new FileWriter("memoria.txt",true);
-                
-                if(texto == null){
-                    for (int i = 0; i < 50; i++) {
-                        fw.write("X\r\n");
-                    }
-                }else{
-                    int memoria = 0;
-                    while(memoria < qtdMemoria){
-                        if(texto.equals("-----")){
-                            fw.write(texto+"\r\n");
-                        }else{
-                            fw.write("10000"+texto+"\r\n");
-                        }
-                        memoria += 10000;
-                    }
+            File file = new File("memoria.txt");
+            FileWriter fw = new FileWriter("memoria.txt",true);
+
+            if(newProcesso == null){
+                for (int i = 0; i < 50; i++) {
+                    fw.write("X\r\n");
                 }
-                fw.close();
             }else{
-                File file = new File("log.txt");
-                FileWriter fw = new FileWriter(file,true);
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-                Date date = new Date();
-                fw.write(dateFormat.format(date)+": "+texto+"\r\n");
-                fw.close();
+                long memoria = 0;
+                while(memoria < newProcesso.getQtdMemoriaSolicitada()){
+                    if(newProcesso.getFinalizado() == true){
+                        fw.write("--------\r\n");
+                    }else{
+                        fw.write("10000 - "+newProcesso.getId()+"\r\n");
+                    }
+                    memoria += 10000;
+                }
             }
+            fw.close();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Problema na escrita do artquivo, ex!");
+            System.out.println(ex);
+        }
+    }
+    
+    /**
+     * Salvar os dados no arquivo txt LOG
+     * @param operacao Enviar 1(criacao) ou 2(Ler/Escrever);
+     * @param texto Enviar texto que deseja salvar
+     * Processo não consegue passar as informações(id) como objeto.     
+     */
+    public void salvarDadosLog(int operacao, String texto){
+        try {
+            File file = new File("log.txt");
+            FileWriter fw = new FileWriter(file,true);
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+            Date date = new Date();
+            
+            if(operacao == 1){
+                //: Criado porcesso "+newProcesso.getId()+", com "+newProcesso.getQtdMemoriaSolicitada()+"kb."
+                 //   + " Alocado de "+newProcesso.getInicioMemoriaAlocada()+" até "+newProcesso.getFimMemoriaAlocada()+
+                fw.write(dateFormat.format(date)+": "+texto+"\r\n");
+            }else if(operacao == 2){
+                fw.write(dateFormat.format(date)+": "+texto+"\r\n");
+            }
+            fw.close();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Problema na escrita do artquivo, ex!");
             System.out.println(ex);

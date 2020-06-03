@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.BestFit;
 import Model.ManipularArquivo;
 import java.io.File;
 import java.util.ArrayList;
@@ -247,9 +248,9 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         if(!jTFCaminhoArquivo.getText().isEmpty()){
             
             Model.ManipularArquivo manu = new Model.ManipularArquivo();
-            manu.salvarDados(1,null,0); // Salvando os processos "X" no txt memoria
+            manu.salvarDadosMemoria(null); // Salvando os processos "X" no txt memoria
             
-            String localArquivo = jTFCaminhoArquivo.getText();
+            String localArquivo = jTFCaminhoArquivo.getText(); // Lendo os processos do Processo1.txt e salvando no log.txt e memoria.txt
             memoriaRAM = manu.lerDados(localArquivo, 1);
             
             atualizaMemoriaTxt();
@@ -281,25 +282,31 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         Model.ManipularArquivo manu = new ManipularArquivo();
         
         File localArquivo = select.localizarArquivo();
-        jTFCaminhoArquivo2.setText(localArquivo.toString());
-        
-        //manu.lerDados(localArquivo);
+        jTFCaminhoArquivo2.setText(localArquivo.toString());        
         
     }//GEN-LAST:event_jBSelecionarArquivo2ActionPerformed
 
     private void jBProcessaArquivo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessaArquivo2ActionPerformed
         if(!jTFCaminhoArquivo2.getText().isEmpty()){
             if(jRBFifo.isSelected()){
-                JOptionPane.showMessageDialog(null, "Adicionar modo FIFO");
+                JOptionPane.showMessageDialog(null, "Adicionar modo FIFO - Cicero");
             }else if(jRBBest.isSelected()){
-                JOptionPane.showMessageDialog(null, "Adicionar modo BEST");
+                
+                Model.ManipularArquivo maniArq = new ManipularArquivo();
+                ArrayList<Model.Processo> novosProcessos = maniArq.lerDados(jTFCaminhoArquivo2.getText().toString(), 2);
+                
+                Model.BestFit best = new Model.BestFit();
+                best.gerenciaBest(memoriaRAM, novosProcessos);
+                
             }else if(jRBWorst.isSelected()){
-                JOptionPane.showMessageDialog(null, "Adicionar modo WORST");
+                JOptionPane.showMessageDialog(null, "Adicionar modo WORST - Wililam");
             }else if(jRBCircular.isSelected()){
-                JOptionPane.showMessageDialog(null, "Adicionar modo CIRCULAR");
+                JOptionPane.showMessageDialog(null, "Adicionar modo CIRCULAR - Cicero");
             }else{
-                JOptionPane.showMessageDialog(this, "Selecione um modo de gerenciamente de memória.");
+                JOptionPane.showMessageDialog(null, "Selecione um modo de gerenciamente de memória.");
             }
+            
+            JOptionPane.showMessageDialog(this, "Arquivo processado!");
         }else{
             JOptionPane.showMessageDialog(this, "Selecione o TXT de entrada.");
             jBSelecionarArquivo2.requestFocus();
@@ -322,15 +329,12 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         jTFCaminhoArquivo2.setText("");
     }//GEN-LAST:event_jBVoltarActionPerformed
 
+    // Atualizando o memoria.txt, pois foi processado o memoriaRAM e criado as lacunas
     public void atualizaMemoriaTxt(){
         Model.ManipularArquivo maniPu = new Model.ManipularArquivo();
         for (int i = 0; i < memoriaRAM.size(); i++) {
             Model.Processo pro = memoriaRAM.get(i);
-            if(pro.getFinalizado() == true){
-                maniPu.salvarDados(1, "-----", pro.getQtdMemoriaSolicitada());
-            }else{
-                maniPu.salvarDados(1, " - "+pro.getId(), pro.getQtdMemoriaSolicitada());
-            }
+            maniPu.salvarDadosMemoria(pro);            
         }
     }
     
