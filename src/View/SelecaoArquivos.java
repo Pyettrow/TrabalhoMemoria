@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class SelecaoArquivos extends javax.swing.JFrame {
     
-    // Criano array que irá referencia a memória
+    // Criano array que irá referenciar a memória
     ArrayList<Model.Processo> memoriaRAM = new ArrayList();
     
     public SelecaoArquivos() {
@@ -231,11 +231,9 @@ public class SelecaoArquivos extends javax.swing.JFrame {
      * @param evt 
      */
     private void jBSelecionarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarArquivoActionPerformed
-        
         Model.SelecionarArquivo selecionarArquivo = new Model.SelecionarArquivo();
         File localArquivo = selecionarArquivo.localizarArquivo();
-        jTFCaminhoArquivo.setText(localArquivo.toString());
-        
+        jTFCaminhoArquivo.setText(localArquivo.toString());       
     }//GEN-LAST:event_jBSelecionarArquivoActionPerformed
 
     /**
@@ -251,9 +249,9 @@ public class SelecaoArquivos extends javax.swing.JFrame {
             manu.salvarDadosMemoria(null); // Salvando os processos "X" no txt memoria
             
             String localArquivo = jTFCaminhoArquivo.getText(); // Lendo os processos do Processo1.txt e salvando no log.txt e memoria.txt
-            memoriaRAM = manu.lerDados(localArquivo, 1);
+            memoriaRAM = manu.lerDados(localArquivo, 1);// Salvando os dados lidos do Processos1.txt no Array referente a memoria RAM
             
-            atualizaMemoriaTxt();
+            atualizaMemoriaTxt(); // Atualizando o txt da memoria com os novos dados do array memoriaRAM
             
             JOptionPane.showMessageDialog(this, "Arquivo processado!");
             
@@ -277,6 +275,10 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBPorcessaArquivo1ActionPerformed
 
+    /**
+     * Botão que chama a tela para selecionar o arquivo TXT.
+     * @param evt 
+     */
     private void jBSelecionarArquivo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSelecionarArquivo2ActionPerformed
         Model.SelecionarArquivo select = new Model.SelecionarArquivo();
         Model.ManipularArquivo manu = new ManipularArquivo();
@@ -286,15 +288,21 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBSelecionarArquivo2ActionPerformed
 
+    /**
+     * Botão para processar o segundo arquivo Processo2.txt
+     * @param evt 
+     */
     private void jBProcessaArquivo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessaArquivo2ActionPerformed
         if(!jTFCaminhoArquivo2.getText().isEmpty()){
             if(jRBFifo.isSelected()){
                 JOptionPane.showMessageDialog(null, "Adicionar modo FIFO - Cicero");
-            }else if(jRBBest.isSelected()){
+            }else if(jRBBest.isSelected()){ // Modo do william
                 
+                // Realiza a leitura do novo txt e salva no array novosProcessos.
                 Model.ManipularArquivo maniArq = new ManipularArquivo();
                 ArrayList<Model.Processo> novosProcessos = maniArq.lerDados(jTFCaminhoArquivo2.getText().toString(), 2);
                 
+                // Chama a classe Best Fit, para poder realizar a alocação nas lacunas dos processos do arquivo Processo1.txt
                 Model.BestFit best = new Model.BestFit();
                 best.gerenciaBest(memoriaRAM, novosProcessos);
                 
@@ -313,6 +321,11 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBProcessaArquivo2ActionPerformed
 
+    /**
+     * Botão voltar, que bloqueia os componentes refenrete ao processamento do 
+     * arquivo Processo2.txt e libera os componentes do Processo1.txt
+     * @param evt 
+     */
     private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
         jTFCaminhoArquivo.setEnabled(true);
         jBSelecionarArquivo.setEnabled(true);
