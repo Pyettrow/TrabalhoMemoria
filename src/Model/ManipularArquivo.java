@@ -22,11 +22,18 @@ import javax.swing.JOptionPane;
  */
 public class ManipularArquivo {
     
-    public void apagaTxts(){
-        File logTxt = new File("log.txt");
-        File memoriaTxt = new File("memoria.txt");
-        logTxt.delete();
-        memoriaTxt.delete();        
+    /**
+     * Apagar arquivos txt antigos.    
+     * @param par 1 para memoria 2 para log e 3 para os dois
+     */
+    public void apagaTxts(int par){
+        if((par == 1) || (par == 3)){
+            File memoriaTxt = new File("memoria.txt");
+            memoriaTxt.delete();        
+        } if((par == 2) || (par == 3)){
+            File logTxt = new File("log.txt");
+            logTxt.delete();
+        }
     }
     
     /**
@@ -89,26 +96,28 @@ public class ManipularArquivo {
     
     /**
      * Salva os processos e as alocações no txt memoria
-     * @param newProcesso Passar o processo que ira sabar os dados no memoria.txt
+     * @param opcao 1 para os X e 2 para gravar os processos
+     * @param newProcesso Passar o processo que ira salvar os dados no memoria.txt
      */
-    public void salvarDadosMemoria(Processo newProcesso){
+    public void salvarDadosMemoria(int opcao, Processo newProcesso){
         try {
             File file = new File("memoria.txt");
-            FileWriter fw = new FileWriter("memoria.txt",true);
-
-            if(newProcesso == null){
+            FileWriter fw = new FileWriter(file, true);
+            if(opcao == 1){
                 for (int i = 0; i < 50; i++) {
                     fw.write("X\r\n");
                 }
-            }else{
+            }else if(opcao == 2){
                 long memoria = 0;
-                while(memoria < newProcesso.getQtdMemoriaSolicitada()){
-                    if(newProcesso.getFinalizado() == true){
-                        fw.write("--------\r\n");
-                    }else{
-                        fw.write("10000 - "+newProcesso.getId()+"\r\n");
+                if(newProcesso != null){
+                    while(memoria < newProcesso.getQtdMemoriaSolicitada()){
+                        if(newProcesso.getFinalizado() == true){
+                            fw.write("--------\r\n");
+                        }else{
+                            fw.write("10000 - "+newProcesso.getId()+"\r\n");
+                        }
+                        memoria += 10000;
                     }
-                    memoria += 10000;
                 }
             }
             fw.close();
@@ -122,7 +131,6 @@ public class ManipularArquivo {
      * Salvar os dados no arquivo txt LOG
      * @param operacao Enviar 1(criacao) ou 2(Ler/Escrever);
      * @param texto Enviar texto que deseja salvar
-     * Processo não consegue passar as informações(id) como objeto.     
      */
     public void salvarDadosLog(int operacao, String texto){
         try {
@@ -132,8 +140,6 @@ public class ManipularArquivo {
             Date date = new Date();
             
             if(operacao == 1){
-                //: Criado porcesso "+newProcesso.getId()+", com "+newProcesso.getQtdMemoriaSolicitada()+"kb."
-                 //   + " Alocado de "+newProcesso.getInicioMemoriaAlocada()+" até "+newProcesso.getFimMemoriaAlocada()+
                 fw.write(dateFormat.format(date)+": "+texto+"\r\n");
             }else if(operacao == 2){
                 fw.write(dateFormat.format(date)+": "+texto+"\r\n");

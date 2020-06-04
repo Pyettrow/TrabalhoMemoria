@@ -42,7 +42,7 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         
         // Apagando arquivos para não manter info duplicados
         Model.ManipularArquivo manip = new Model.ManipularArquivo();
-        manip.apagaTxts();
+        manip.apagaTxts(3);
     }
 
     /**
@@ -246,7 +246,6 @@ public class SelecaoArquivos extends javax.swing.JFrame {
         if(!jTFCaminhoArquivo.getText().isEmpty()){
             
             Model.ManipularArquivo manu = new Model.ManipularArquivo();
-            manu.salvarDadosMemoria(null); // Salvando os processos "X" no txt memoria
             
             String localArquivo = jTFCaminhoArquivo.getText(); // Lendo os processos do Processo1.txt e salvando no log.txt e memoria.txt
             memoriaRAM = manu.lerDados(localArquivo, 1);// Salvando os dados lidos do Processos1.txt no Array referente a memoria RAM
@@ -304,7 +303,9 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                 
                 // Chama a classe Best Fit, para poder realizar a alocação nas lacunas dos processos do arquivo Processo1.txt
                 Model.BestFit best = new Model.BestFit();
-                best.gerenciaBest(memoriaRAM, novosProcessos);
+                memoriaRAM = best.gerenciaBest(memoriaRAM, novosProcessos);
+                
+                atualizaMemoriaTxt();
                 
             }else if(jRBWorst.isSelected()){
                 JOptionPane.showMessageDialog(null, "Adicionar modo WORST - Wililam");
@@ -345,9 +346,11 @@ public class SelecaoArquivos extends javax.swing.JFrame {
     // Atualizando o memoria.txt, pois foi processado o memoriaRAM e criado as lacunas
     public void atualizaMemoriaTxt(){
         Model.ManipularArquivo maniPu = new Model.ManipularArquivo();
+        maniPu.apagaTxts(1);
+        maniPu.salvarDadosMemoria(1, null);
         for (int i = 0; i < memoriaRAM.size(); i++) {
             Model.Processo pro = memoriaRAM.get(i);
-            maniPu.salvarDadosMemoria(pro);            
+            maniPu.salvarDadosMemoria(2, pro);            
         }
     }
     
