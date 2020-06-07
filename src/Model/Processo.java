@@ -119,6 +119,12 @@ public class Processo {
     public void setFinalizado(boolean finalizado) {
         this.finalizado = finalizado;
     }
-    
-    
+
+    public String[] getOperacao() {
+        return operacao;
+    }
+
+    public void setOperacao(String[] operacao) {
+        this.operacao = operacao;
+    }
 }

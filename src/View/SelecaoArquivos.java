@@ -306,7 +306,8 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                 memoriaRAM = best.gerenciaBest(memoriaRAM, novosProcessos);
                 
                 atualizaMemoriaTxt();
-                
+             
+                JOptionPane.showMessageDialog(this, "Arquivo processado!");
             }else if(jRBWorst.isSelected()){
                 JOptionPane.showMessageDialog(null, "Adicionar modo WORST - Wililam");
             }else if(jRBCircular.isSelected()){
@@ -314,8 +315,6 @@ public class SelecaoArquivos extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Selecione um modo de gerenciamente de memória.");
             }
-            
-            JOptionPane.showMessageDialog(this, "Arquivo processado!");
         }else{
             JOptionPane.showMessageDialog(this, "Selecione o TXT de entrada.");
             jBSelecionarArquivo2.requestFocus();
