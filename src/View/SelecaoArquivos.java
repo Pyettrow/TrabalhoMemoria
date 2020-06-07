@@ -293,28 +293,33 @@ public class SelecaoArquivos extends javax.swing.JFrame {
      */
     private void jBProcessaArquivo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessaArquivo2ActionPerformed
         if(!jTFCaminhoArquivo2.getText().isEmpty()){
+            // Realiza a leitura do novo txt e salva no array novosProcessos.
+            Model.ManipularArquivo maniArq = new ManipularArquivo();
+            ArrayList<Model.Processo> novosProcessos = maniArq.lerDados(jTFCaminhoArquivo2.getText().toString(), 2);
+            
             if(jRBFifo.isSelected()){
                 JOptionPane.showMessageDialog(null, "Adicionar modo FIFO - Cicero");
             }else if(jRBBest.isSelected()){ // Modo do william
                 
-                // Realiza a leitura do novo txt e salva no array novosProcessos.
-                Model.ManipularArquivo maniArq = new ManipularArquivo();
-                ArrayList<Model.Processo> novosProcessos = maniArq.lerDados(jTFCaminhoArquivo2.getText().toString(), 2);
-                
                 // Chama a classe Best Fit, para poder realizar a alocação nas lacunas dos processos do arquivo Processo1.txt
-                Model.BestFit best = new Model.BestFit();
-                memoriaRAM = best.gerenciaBest(memoriaRAM, novosProcessos);
-                
-                atualizaMemoriaTxt();
+                Model.BestFit bestFit = new Model.BestFit();
+                memoriaRAM = bestFit.gerenciaBest(memoriaRAM, novosProcessos);
              
                 JOptionPane.showMessageDialog(this, "Arquivo processado!");
-            }else if(jRBWorst.isSelected()){
-                JOptionPane.showMessageDialog(null, "Adicionar modo WORST - Wililam");
+                
+            }else if(jRBWorst.isSelected()){ // Modo do William
+                
+                Model.WorstFit worstFit = new Model.WorstFit();
+                memoriaRAM = worstFit.gerenciaWorst(memoriaRAM, novosProcessos);
+                
+                JOptionPane.showMessageDialog(this, "Arquivo processado!");
+                
             }else if(jRBCircular.isSelected()){
                 JOptionPane.showMessageDialog(null, "Adicionar modo CIRCULAR - Cicero");
             }else{
                 JOptionPane.showMessageDialog(null, "Selecione um modo de gerenciamente de memória.");
             }
+            atualizaMemoriaTxt();
         }else{
             JOptionPane.showMessageDialog(this, "Selecione o TXT de entrada.");
             jBSelecionarArquivo2.requestFocus();

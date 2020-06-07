@@ -8,12 +8,12 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * Método para organizar o txt Processo2.txt na memoria RAM.
+ *
  * @author William
  */
-public class BestFit {
+public class WorstFit {
     
-    public ArrayList<Processo> gerenciaBest(ArrayList<Processo> memoriaRam, ArrayList<Processo> novosProcessos){
+    public ArrayList<Processo> gerenciaWorst(ArrayList<Processo> memoriaRam, ArrayList<Processo> novosProcessos){
         ManipularArquivo maniArq = new ManipularArquivo();
         ArrayList<Processo> novaListaRAM = new ArrayList();
         
@@ -22,7 +22,7 @@ public class BestFit {
         
         boolean encontrouEspaco = false;
         int processoExcluido = 0, j = 0, i = 0;
-        long menorEspacoVazio = 100000000;
+        long maiorEspacoVazio = 0;
         
         for (i = 0; i < novosProcessos.size(); i++) { // Pega um dos processo para ser add que veio da nova lista
             newProcesso = novosProcessos.get(i);
@@ -33,15 +33,15 @@ public class BestFit {
                 if(processoMemoriaRam.getFinalizado() == true){ // Verificar se o processo que esta na memoriaRAM esta finalizado, ou seja, é uma lacuna e pode ser usado.
                     
                     // Validando se a quantidade solicitada(do novo processo) é do tamanho ou menor que a quantidade encontrada e validando se é realmente o menor espaço.
-                    if((processoMemoriaRam.getQtdMemoriaSolicitada() < menorEspacoVazio) && 
+                    if((processoMemoriaRam.getQtdMemoriaSolicitada() > maiorEspacoVazio) && 
                         (newProcesso.getQtdMemoriaSolicitada() <= processoMemoriaRam.getQtdMemoriaSolicitada())){
-                        menorEspacoVazio = processoMemoriaRam.getQtdMemoriaSolicitada();
+                        maiorEspacoVazio = processoMemoriaRam.getQtdMemoriaSolicitada();
                         encontrouEspaco = true;
                         processoExcluido = j;
                     }
                 }
             }
-            menorEspacoVazio = 100000000;
+            maiorEspacoVazio = 0;
             // Valida se encontrou uma lacuna que tenha o tamanho do novo processo a ser alocado
             if(encontrouEspaco == true){
                 // Se o tamanho da lacuna e do novo processo forem iguais, só irá substituir os objetos
@@ -108,4 +108,5 @@ public class BestFit {
         }
         return memoriaRam;
     }
+    
 }
