@@ -298,7 +298,10 @@ public class SelecaoArquivos extends javax.swing.JFrame {
             ArrayList<Model.Processo> novosProcessos = maniArq.lerDados(jTFCaminhoArquivo2.getText().toString(), 2);
             
             if(jRBFifo.isSelected()){
-                JOptionPane.showMessageDialog(null, "Adicionar modo FIFO - Cicero");
+                Model.FirstFit firstFit = new Model.FirstFit();
+                memoriaRAM = firstFit.gerenciaFirst(memoriaRAM, novosProcessos);
+             
+                JOptionPane.showMessageDialog(this, "Arquivo processado!");
             }else if(jRBBest.isSelected()){ // Modo do william
                 
                 // Chama a classe Best Fit, para poder realizar a alocação nas lacunas dos processos do arquivo Processo1.txt
