@@ -308,6 +308,8 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                 Model.BestFit bestFit = new Model.BestFit();
                 memoriaRAM = bestFit.gerenciaBest(memoriaRAM, novosProcessos);
              
+                jBProcessaArquivo2.setEnabled(false);
+                
                 JOptionPane.showMessageDialog(this, "Arquivo processado!");
                 
             }else if(jRBWorst.isSelected()){ // Modo do William

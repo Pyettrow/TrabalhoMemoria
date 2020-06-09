@@ -38,20 +38,44 @@ public class Processo {
         //Percorre a linha lida setor por setor. Setor é devidido pelo "|"
         for (int i = 0 ; i < this.operacao.length; i++) {
             if(i >= 2){ // Esta validando se o setor é posterior ou igual ao segundo                   
-                if(this.operacao[i].contains("sw")){// Verifica se no setor tem SW
-                    detalheSetor = this.operacao[i].split(",");
-                    String acao = detalheSetor[0];
-                    String posicao = detalheSetor[1];
-                    String escrita = detalheSetor[2];
 
-                    maniPu.salvarDadosLog(2, "Processo "+this.id+" escreveu "+escrita+
-                            " na posição "+posicao);
+                detalheSetor = this.operacao[i].split(",");
+                                    
+                if(this.operacao[i].contains("sw")){// Verifica se no setor tem SW
+                    String acao = detalheSetor[0];
+                    String escrita = detalheSetor[1];
+                    long posicao = Long.parseLong(detalheSetor[2]);
+                    
+                    posicao = posicao + this.inicioMemoriaAlocada;
+                    
+                    if((posicao >= this.inicioMemoriaAlocada) && //Verifica se a interação do processo esta dentro da memoria que foi alocada para ele.
+                        (posicao <= (this.fimMemoriaAlocada + 9999))){
+                        maniPu.salvarDadosLog(2, "Processo "+this.id+" escreveu "+escrita+
+                        " na posição "+posicao);
+                    }else{
+                        maniPu.salvarDadosLog(2, "Processo "+this.id+" encerrado devido acesso indevido de memória. "
+                                + "Tentou acessar posição "+posicao);
+                        finalizaProcesso();
+                        break;
+                    }
 
                 }else if(this.operacao[i].contains("lw")){// Verifica se no setor tem LW
-                    detalheSetor = this.operacao[i].split(",");
-                    maniPu.salvarDadosLog(2, "Processo "+this.id+" leu na posição "+detalheSetor[1]);
-                }else if(this.operacao[i].contains("-")){// Verifica se no setor tem =
+                    long posicao = Long.parseLong(detalheSetor[1]);
                     
+                    posicao = posicao + this.inicioMemoriaAlocada;
+                    
+                    if((posicao >= this.inicioMemoriaAlocada) && //Verifica se a interação do processo esta dentro da memoria que foi alocada para ele.
+                        (posicao <= (this.fimMemoriaAlocada + 9999))){
+                        maniPu.salvarDadosLog(2, "Processo "+this.id+" leu na posição "+posicao);
+                    }else{
+                        maniPu.salvarDadosLog(2, "Processo "+this.id+" encerrado devido acesso indevido de memória. "
+                                + "Tentou acessar posição "+posicao);
+                        finalizaProcesso();
+                        break;
+                    }
+
+                }else if(this.operacao[i].contains("-")){// Verifica se no setor tem -
+
                 }else if(this.operacao[i].contains("ES")){// Verifica se no setor tem ES
                     maniPu.salvarDadosLog(2, "Processo "+this.id+" irá interagir com um ES.");
                     /**
@@ -68,6 +92,10 @@ public class Processo {
                 }
             }
         }
+    }
+    
+    public void verificaAlocacao(){
+        
     }
     
     public void espacoLivre(){

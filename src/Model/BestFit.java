@@ -32,9 +32,9 @@ public class BestFit {
                 processoMemoriaRam = memoriaRam.get(j);
                 if(processoMemoriaRam.getFinalizado() == true){ // Verificar se o processo que esta na memoriaRAM esta finalizado, ou seja, é uma lacuna e pode ser usado.
                     
-                    // Validando se a quantidade solicitada(do novo processo) é do tamanho ou menor que a quantidade encontrada e validando se é realmente o menor espaço.
                     if((processoMemoriaRam.getQtdMemoriaSolicitada() < menorEspacoVazio) && 
-                        (newProcesso.getQtdMemoriaSolicitada() <= processoMemoriaRam.getQtdMemoriaSolicitada())){
+                        (newProcesso.getQtdMemoriaSolicitada() <= processoMemoriaRam.getQtdMemoriaSolicitada())
+                            && (processoMemoriaRam.getQtdMemoriaSolicitada() < menorEspacoVazio)){
                         menorEspacoVazio = processoMemoriaRam.getQtdMemoriaSolicitada();
                         encontrouEspaco = true;
                         processoExcluido = j;
@@ -48,12 +48,13 @@ public class BestFit {
                 if(newProcesso.getQtdMemoriaSolicitada() == memoriaRam.get(processoExcluido).getQtdMemoriaSolicitada()){
                     maniArq.salvarDadosLog(1, "Criado processo "+newProcesso.getId()+", com "+newProcesso.getQtdMemoriaSolicitada()+"kb."
                 + " Alocado de "+memoriaRam.get(processoExcluido).getInicioMemoriaAlocada()+" até "
-                +memoriaRam.get(processoExcluido).getFimMemoriaAlocada()+" utilizando lacuna do processo "+memoriaRam.get(processoExcluido).getId());
+                +(memoriaRam.get(processoExcluido).getFimMemoriaAlocada() + 9998)+" utilizando lacuna do processo "+memoriaRam.get(processoExcluido).getId());
 
-                    memoriaRam.get(processoExcluido).setId(newProcesso.getId());                            
+                    memoriaRam.get(processoExcluido).setId(newProcesso.getId());
+                    memoriaRam.get(processoExcluido).setOperacao(novosProcessos.get(i).getOperacao());
                     memoriaRam.get(processoExcluido).setFinalizado(false);
 
-                    newProcesso.gerenciaProcesso();
+                    memoriaRam.get(processoExcluido).gerenciaProcesso();
                 }else if(newProcesso.getQtdMemoriaSolicitada() < memoriaRam.get(processoExcluido).getQtdMemoriaSolicitada()){ //Se o processo for menor que a lacuna, esta criando uma lita temporaria para organizar os objetos
                     for (int k = 0; k < memoriaRam.size(); k++) { // Procurando o processo que foi escolhido para substituir com o novo(Processo2.txt) e criar uma lacuna do restante
                         Processo processoMemoria = memoriaRam.get(k);
@@ -64,17 +65,15 @@ public class BestFit {
                                     , novosProcessos.get(i).getOperacao());
                             
                             maniArq.salvarDadosLog(1, "Criado processo "+novoProcessoParaAlocar.getId()+", com "+novoProcessoParaAlocar.getQtdMemoriaSolicitada()+"kb."
-                            + " Alocado de "+novoProcessoParaAlocar.getInicioMemoriaAlocada()+" até "+novoProcessoParaAlocar.getFimMemoriaAlocada()+" utilizando "
+                            + " Alocado de "+novoProcessoParaAlocar.getInicioMemoriaAlocada()+" até "+(novoProcessoParaAlocar.getFimMemoriaAlocada() + 9998)+" utilizando "
                                     + "lacuna do processo "+ processoMemoria.getId());
-                            newProcesso.gerenciaProcesso();
                             
                             novoProcessoParaAlocar.gerenciaProcesso();
                             
-                            Processo lacunaDoProcessoAntigo = new Processo(0, ( processoMemoriaRam.getFimMemoriaAlocada() - (novoProcessoParaAlocar.getFimMemoriaAlocada() + 10000))
-                                    , (novoProcessoParaAlocar.getFimMemoriaAlocada() + 10000), processoMemoriaRam.getFimMemoriaAlocada(), null);
+                            Processo lacunaDoProcessoAntigo = new Processo(0, ( processoMemoria.getQtdMemoriaSolicitada() - novoProcessoParaAlocar.getQtdMemoriaSolicitada())
+                                    , (novoProcessoParaAlocar.getFimMemoriaAlocada() + 10000), processoMemoria.getFimMemoriaAlocada(), null);
                             lacunaDoProcessoAntigo.finalizaProcesso();
                             
-                            // Juntando os dois novos processos com os demais do ArrayList memoriaRam
                             for (int l = 0; l < memoriaRam.size(); l++) {
                                 Processo consultaProcesso = memoriaRam.get(l);
                                 if(l == processoExcluido){
@@ -84,9 +83,9 @@ public class BestFit {
                                     novaListaRAM.add(consultaProcesso);
                                 }
                             }
-                            
-                            // Apagando o ArrayList memoriaRam, para colocar todos os processos da lista temporaria nela
+                                
                             memoriaRam.clear();
+
                             for (int m = 0; m < novaListaRAM.size(); m++) {
                                 Processo trocaLista = novaListaRAM.get(m);
                                 memoriaRam.add(trocaLista);

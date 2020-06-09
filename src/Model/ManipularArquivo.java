@@ -65,7 +65,7 @@ public class ManipularArquivo {
                  */
                 if(processo == 1){ 
                     inicioMemoriaAlocada = proximaMemoria;
-                    fimMemoriaAlocada = proximaMemoria+qtdMemoriaSolicitada;
+                    fimMemoriaAlocada = (proximaMemoria+qtdMemoriaSolicitada)-10000;
                     proximaMemoria = fimMemoriaAlocada+10000;
                 }else if(processo == 2){                    
                     inicioMemoriaAlocada = 0;
@@ -76,10 +76,9 @@ public class ManipularArquivo {
                         inicioMemoriaAlocada, fimMemoriaAlocada, linhaLida);
                 if(processo == 1){
                     salvarDadosLog(1, "Criado processo "+newProcesso.getId()+", com "+newProcesso.getQtdMemoriaSolicitada()+"kb."
-                    + " Alocado de "+newProcesso.getInicioMemoriaAlocada()+" até "+newProcesso.getFimMemoriaAlocada());
+                    + " Alocado de "+newProcesso.getInicioMemoriaAlocada()+" até "+(newProcesso.getFimMemoriaAlocada() + 9998));
                     newProcesso.gerenciaProcesso();
                 }
-
 
                 listProcessos.add(newProcesso);
                 linha = bf.readLine();
