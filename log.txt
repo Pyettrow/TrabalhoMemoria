@@ -1,94 +1,163 @@
-08/06/2020 21:47:34: Criado processo 1, com 50000kb. Alocado de 500001 até 549999
-08/06/2020 21:47:34: Processo 1 escreveu 1000 na posição 500002
-08/06/2020 21:47:34: Processo 1 escreveu 0001 na posição 549998
-08/06/2020 21:47:34: Processo 1 escreveu 1111 na posição 500501
-08/06/2020 21:47:34: Processo 1 irá interagir com um ES.
-08/06/2020 21:47:34: Criado processo 2, com 50000kb. Alocado de 550001 até 599999
-08/06/2020 21:47:34: Processo 2 escreveu 1000 na posição 550002
-08/06/2020 21:47:34: Processo 2 escreveu 0001 na posição 599998
-08/06/2020 21:47:34: Processo 2 irá interagir com um ES.
-08/06/2020 21:47:34: Criado processo 3, com 40000kb. Alocado de 600001 até 639999
-08/06/2020 21:47:34: Processo 3 escreveu 1000 na posição 600002
-08/06/2020 21:47:34: Processo 3 escreveu 0001 na posição 639998
-08/06/2020 21:47:34: Processo 3 encerrado.
-08/06/2020 21:47:34: Criado processo 4, com 60000kb. Alocado de 640001 até 699999
-08/06/2020 21:47:34: Processo 4 escreveu 1000 na posição 640002
-08/06/2020 21:47:34: Processo 4 escreveu 0001 na posição 699998
-08/06/2020 21:47:34: Processo 4 irá interagir com um ES.
-08/06/2020 21:47:34: Criado processo 5, com 10000kb. Alocado de 700001 até 709999
-08/06/2020 21:47:34: Processo 5 escreveu 1000 na posição 700002
-08/06/2020 21:47:34: Processo 5 escreveu 0001 na posição 709998
-08/06/2020 21:47:34: Processo 5 encerrado.
-08/06/2020 21:47:34: Criado processo 6, com 90000kb. Alocado de 710001 até 799999
-08/06/2020 21:47:34: Processo 6 escreveu 1000 na posição 710002
-08/06/2020 21:47:34: Processo 6 escreveu 0001 na posição 799998
-08/06/2020 21:47:34: Processo 6 irá interagir com um ES.
-08/06/2020 21:47:34: Criado processo 7, com 80000kb. Alocado de 800001 até 879999
-08/06/2020 21:47:34: Processo 7 escreveu 1111 na posição 800002
-08/06/2020 21:47:34: Processo 7 encerrado devido acesso indevido de memória. Tentou acessar posição 882001
-08/06/2020 21:47:34: Criado processo 8, com 20000kb. Alocado de 880001 até 899999
-08/06/2020 21:47:34: Processo 8 escreveu 1000 na posição 880002
-08/06/2020 21:47:34: Processo 8 escreveu 0001 na posição 899998
-08/06/2020 21:47:34: Processo 8 irá interagir com um ES.
-08/06/2020 21:47:34: Criado processo 9, com 30000kb. Alocado de 900001 até 929999
-08/06/2020 21:47:34: Processo 9 escreveu 1000 na posição 900002
-08/06/2020 21:47:34: Processo 9 escreveu 0001 na posição 929998
-08/06/2020 21:47:34: Processo 9 irá interagir com um ES.
-08/06/2020 21:47:34: Criado processo 10, com 70000kb. Alocado de 930001 até 999999
-08/06/2020 21:47:34: Processo 10 escreveu 1000 na posição 930002
-08/06/2020 21:47:34: Processo 10 escreveu 0001 na posição 999998
-08/06/2020 21:47:34: Processo 10 irá interagir com um ES.
-08/06/2020 21:47:43: Criado processo 1, com 50000kb. Alocado de 500001 até 549999
-08/06/2020 21:47:43: Processo 1 escreveu 1000 na posição 500002
-08/06/2020 21:47:43: Processo 1 escreveu 0001 na posição 549998
-08/06/2020 21:47:43: Processo 1 escreveu 1111 na posição 500501
-08/06/2020 21:47:43: Processo 1 irá interagir com um ES.
-08/06/2020 21:47:43: Criado processo 2, com 50000kb. Alocado de 550001 até 599999
-08/06/2020 21:47:43: Processo 2 escreveu 1000 na posição 550002
-08/06/2020 21:47:43: Processo 2 escreveu 0001 na posição 599998
-08/06/2020 21:47:43: Processo 2 irá interagir com um ES.
-08/06/2020 21:47:43: Criado processo 3, com 40000kb. Alocado de 600001 até 639999
-08/06/2020 21:47:43: Processo 3 escreveu 1000 na posição 600002
-08/06/2020 21:47:43: Processo 3 escreveu 0001 na posição 639998
-08/06/2020 21:47:43: Processo 3 encerrado.
-08/06/2020 21:47:43: Criado processo 4, com 60000kb. Alocado de 640001 até 699999
-08/06/2020 21:47:43: Processo 4 escreveu 1000 na posição 640002
-08/06/2020 21:47:43: Processo 4 escreveu 0001 na posição 699998
-08/06/2020 21:47:43: Processo 4 irá interagir com um ES.
-08/06/2020 21:47:43: Criado processo 5, com 10000kb. Alocado de 700001 até 709999
-08/06/2020 21:47:43: Processo 5 escreveu 1000 na posição 700002
-08/06/2020 21:47:43: Processo 5 escreveu 0001 na posição 709998
-08/06/2020 21:47:43: Processo 5 encerrado.
-08/06/2020 21:47:43: Criado processo 6, com 90000kb. Alocado de 710001 até 799999
-08/06/2020 21:47:43: Processo 6 escreveu 1000 na posição 710002
-08/06/2020 21:47:43: Processo 6 escreveu 0001 na posição 799998
-08/06/2020 21:47:43: Processo 6 irá interagir com um ES.
-08/06/2020 21:47:43: Criado processo 7, com 80000kb. Alocado de 800001 até 879999
-08/06/2020 21:47:43: Processo 7 escreveu 1111 na posição 800002
-08/06/2020 21:47:43: Processo 7 encerrado devido acesso indevido de memória. Tentou acessar posição 882001
-08/06/2020 21:47:43: Criado processo 8, com 20000kb. Alocado de 880001 até 899999
-08/06/2020 21:47:43: Processo 8 escreveu 1000 na posição 880002
-08/06/2020 21:47:43: Processo 8 escreveu 0001 na posição 899998
-08/06/2020 21:47:43: Processo 8 irá interagir com um ES.
-08/06/2020 21:47:43: Criado processo 9, com 30000kb. Alocado de 900001 até 929999
-08/06/2020 21:47:43: Processo 9 escreveu 1000 na posição 900002
-08/06/2020 21:47:43: Processo 9 escreveu 0001 na posição 929998
-08/06/2020 21:47:43: Processo 9 irá interagir com um ES.
-08/06/2020 21:47:43: Criado processo 10, com 70000kb. Alocado de 930001 até 999999
-08/06/2020 21:47:43: Processo 10 escreveu 1000 na posição 930002
-08/06/2020 21:47:43: Processo 10 escreveu 0001 na posição 999998
-08/06/2020 21:47:43: Processo 10 encerrado.
-08/06/2020 21:48:28: Criado processo 11, com 10000kb. Alocado de 700001 até 709999 utilizando lacuna do processo 5
-08/06/2020 21:48:28: Processo 11 escreveu 1000 na posição 700002
-08/06/2020 21:48:28: Processo 11 escreveu 0001 na posição 709998
-08/06/2020 21:48:28: Processo 11 escreveu 1111 na posição 700501
-08/06/2020 21:48:28: Processo 11 irá interagir com um ES.
-08/06/2020 21:48:28: Criado processo 12, com 40000kb. Alocado de 600001 até 639999 utilizando lacuna do processo 3
-08/06/2020 21:48:28: Processo 12 leu na posição 600002
-08/06/2020 21:48:28: Processo 12 escreveu 1000 na posição 600002
-08/06/2020 21:48:28: Processo 12 escreveu 0001 na posição 639998
-08/06/2020 21:48:28: Processo 12 irá interagir com um ES.
-08/06/2020 21:48:28: Criado processo 13, com 30000kb. Alocado de 930001 até 969999 utilizando lacuna do processo 10
-08/06/2020 21:48:28: Processo 13 escreveu 1000 na posição 930002
-08/06/2020 21:48:28: Processo 13 escreveu 0001 na posição 959998
-08/06/2020 21:48:28: Processo 13 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 1, com 50000kb. Alocado de 500001 até 549999
+08/06/2020 22:30:07: Processo 1 escreveu 1000 na posição 500002
+08/06/2020 22:30:07: Processo 1 escreveu 0001 na posição 549998
+08/06/2020 22:30:07: Processo 1 escreveu 1111 na posição 500501
+08/06/2020 22:30:07: Processo 1 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 2, com 50000kb. Alocado de 550001 até 599999
+08/06/2020 22:30:07: Processo 2 escreveu 1000 na posição 550002
+08/06/2020 22:30:07: Processo 2 escreveu 0001 na posição 599998
+08/06/2020 22:30:07: Processo 2 encerrado.
+08/06/2020 22:30:07: Criado processo 3, com 40000kb. Alocado de 600001 até 639999
+08/06/2020 22:30:07: Processo 3 escreveu 1000 na posição 600002
+08/06/2020 22:30:07: Processo 3 escreveu 0001 na posição 639998
+08/06/2020 22:30:07: Processo 3 encerrado.
+08/06/2020 22:30:07: Criado processo 4, com 60000kb. Alocado de 640001 até 699999
+08/06/2020 22:30:07: Processo 4 escreveu 1000 na posição 640002
+08/06/2020 22:30:07: Processo 4 escreveu 0001 na posição 699998
+08/06/2020 22:30:07: Processo 4 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 5, com 10000kb. Alocado de 700001 até 709999
+08/06/2020 22:30:07: Processo 5 escreveu 1000 na posição 700002
+08/06/2020 22:30:07: Processo 5 escreveu 0001 na posição 709998
+08/06/2020 22:30:07: Processo 5 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 6, com 90000kb. Alocado de 710001 até 799999
+08/06/2020 22:30:07: Processo 6 escreveu 1000 na posição 710002
+08/06/2020 22:30:07: Processo 6 escreveu 0001 na posição 799998
+08/06/2020 22:30:07: Processo 6 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 7, com 80000kb. Alocado de 800001 até 879999
+08/06/2020 22:30:07: Processo 7 escreveu 1111 na posição 800002
+08/06/2020 22:30:07: Processo 7 escreveu 0001 na posição 800003
+08/06/2020 22:30:07: Processo 7 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 8, com 20000kb. Alocado de 880001 até 899999
+08/06/2020 22:30:07: Processo 8 escreveu 1000 na posição 880002
+08/06/2020 22:30:07: Processo 8 escreveu 0001 na posição 899998
+08/06/2020 22:30:07: Processo 8 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 9, com 30000kb. Alocado de 900001 até 929999
+08/06/2020 22:30:07: Processo 9 escreveu 1000 na posição 900002
+08/06/2020 22:30:07: Processo 9 escreveu 0001 na posição 929998
+08/06/2020 22:30:07: Processo 9 irá interagir com um ES.
+08/06/2020 22:30:07: Criado processo 10, com 70000kb. Alocado de 930001 até 999999
+08/06/2020 22:30:07: Processo 10 escreveu 1000 na posição 930002
+08/06/2020 22:30:07: Processo 10 escreveu 0001 na posição 999998
+08/06/2020 22:30:07: Processo 10 encerrado.
+08/06/2020 22:30:14: Criado processo 11, com 10000kb. Alocado de 600001 até 619999 utilizando lacuna do processo 3
+08/06/2020 22:30:14: Processo 11 escreveu 1000 na posição 600002
+08/06/2020 22:30:14: Processo 11 escreveu 0001 na posição 609998
+08/06/2020 22:30:14: Processo 11 escreveu 1111 na posição 600501
+08/06/2020 22:30:14: Processo 11 irá interagir com um ES.
+08/06/2020 22:30:14: Criado processo 12, com 40000kb. Alocado de 550001 até 599999 utilizando lacuna do processo 2
+08/06/2020 22:30:14: Processo 12 leu na posição 550002
+08/06/2020 22:30:14: Processo 12 escreveu 1000 na posição 550002
+08/06/2020 22:30:14: Processo 12 escreveu 0001 na posição 589998
+08/06/2020 22:30:14: Processo 12 irá interagir com um ES.
+08/06/2020 22:30:14: Criado processo 13, com 30000kb. Alocado de 620001 até 639999 utilizando lacuna do processo 0
+08/06/2020 22:30:14: Processo 13 escreveu 1000 na posição 620002
+08/06/2020 22:30:14: Processo 13 encerrado devido acesso indevido de memória. Tentou acessar posição 649998
+08/06/2020 22:30:45: Criado processo 1, com 50000kb. Alocado de 500001 até 549999
+08/06/2020 22:30:45: Processo 1 escreveu 1000 na posição 500002
+08/06/2020 22:30:45: Processo 1 escreveu 0001 na posição 549998
+08/06/2020 22:30:45: Processo 1 escreveu 1111 na posição 500501
+08/06/2020 22:30:45: Processo 1 irá interagir com um ES.
+08/06/2020 22:30:45: Criado processo 2, com 50000kb. Alocado de 550001 até 599999
+08/06/2020 22:30:45: Processo 2 escreveu 1000 na posição 550002
+08/06/2020 22:30:45: Processo 2 escreveu 0001 na posição 599998
+08/06/2020 22:30:45: Processo 2 encerrado.
+08/06/2020 22:30:45: Criado processo 3, com 40000kb. Alocado de 600001 até 639999
+08/06/2020 22:30:45: Processo 3 escreveu 1000 na posição 600002
+08/06/2020 22:30:45: Processo 3 escreveu 0001 na posição 639998
+08/06/2020 22:30:45: Processo 3 encerrado.
+08/06/2020 22:30:45: Criado processo 4, com 60000kb. Alocado de 640001 até 699999
+08/06/2020 22:30:45: Processo 4 escreveu 1000 na posição 640002
+08/06/2020 22:30:45: Processo 4 escreveu 0001 na posição 699998
+08/06/2020 22:30:45: Processo 4 irá interagir com um ES.
+08/06/2020 22:30:45: Criado processo 5, com 10000kb. Alocado de 700001 até 709999
+08/06/2020 22:30:45: Processo 5 escreveu 1000 na posição 700002
+08/06/2020 22:30:45: Processo 5 escreveu 0001 na posição 709998
+08/06/2020 22:30:45: Processo 5 irá interagir com um ES.
+08/06/2020 22:30:45: Criado processo 6, com 90000kb. Alocado de 710001 até 799999
+08/06/2020 22:30:45: Processo 6 escreveu 1000 na posição 710002
+08/06/2020 22:30:45: Processo 6 escreveu 0001 na posição 799998
+08/06/2020 22:30:45: Processo 6 irá interagir com um ES.
+08/06/2020 22:30:45: Criado processo 7, com 80000kb. Alocado de 800001 até 879999
+08/06/2020 22:30:45: Processo 7 escreveu 1111 na posição 800002
+08/06/2020 22:30:45: Processo 7 escreveu 0001 na posição 800003
+08/06/2020 22:30:45: Processo 7 irá interagir com um ES.
+08/06/2020 22:30:45: Criado processo 8, com 20000kb. Alocado de 880001 até 899999
+08/06/2020 22:30:45: Processo 8 escreveu 1000 na posição 880002
+08/06/2020 22:30:45: Processo 8 escreveu 0001 na posição 899998
+08/06/2020 22:30:45: Processo 8 irá interagir com um ES.
+08/06/2020 22:30:45: Criado processo 9, com 30000kb. Alocado de 900001 até 929999
+08/06/2020 22:30:45: Processo 9 escreveu 1000 na posição 900002
+08/06/2020 22:30:45: Processo 9 escreveu 0001 na posição 929998
+08/06/2020 22:30:45: Processo 9 irá interagir com um ES.
+08/06/2020 22:30:45: Criado processo 10, com 70000kb. Alocado de 930001 até 999999
+08/06/2020 22:30:45: Processo 10 escreveu 1000 na posição 930002
+08/06/2020 22:30:45: Processo 10 escreveu 0001 na posição 999998
+08/06/2020 22:30:45: Processo 10 encerrado.
+08/06/2020 22:30:51: Criado processo 11, com 10000kb. Alocado de 930001 até 949999 utilizando lacuna do processo 10
+08/06/2020 22:30:51: Processo 11 escreveu 1000 na posição 930002
+08/06/2020 22:30:51: Processo 11 escreveu 0001 na posição 939998
+08/06/2020 22:30:51: Processo 11 escreveu 1111 na posição 930501
+08/06/2020 22:30:51: Processo 11 irá interagir com um ES.
+08/06/2020 22:30:51: Criado processo 12, com 40000kb. Alocado de 950001 até 999999 utilizando lacuna do processo 0
+08/06/2020 22:30:51: Processo 12 leu na posição 950002
+08/06/2020 22:30:51: Processo 12 escreveu 1000 na posição 950002
+08/06/2020 22:30:51: Processo 12 escreveu 0001 na posição 989998
+08/06/2020 22:30:51: Processo 12 irá interagir com um ES.
+08/06/2020 22:30:51: Criado processo 13, com 30000kb. Alocado de 550001 até 589999 utilizando lacuna do processo 2
+08/06/2020 22:30:51: Processo 13 escreveu 1000 na posição 550002
+08/06/2020 22:30:51: Processo 13 escreveu 0001 na posição 579998
+08/06/2020 22:30:51: Processo 13 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 1, com 50000kb. Alocado de 500001 até 549999
+08/06/2020 22:31:11: Processo 1 escreveu 1000 na posição 500002
+08/06/2020 22:31:11: Processo 1 escreveu 0001 na posição 549998
+08/06/2020 22:31:11: Processo 1 escreveu 1111 na posição 500501
+08/06/2020 22:31:11: Processo 1 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 2, com 50000kb. Alocado de 550001 até 599999
+08/06/2020 22:31:11: Processo 2 escreveu 1000 na posição 550002
+08/06/2020 22:31:11: Processo 2 escreveu 0001 na posição 599998
+08/06/2020 22:31:11: Processo 2 encerrado.
+08/06/2020 22:31:11: Criado processo 3, com 40000kb. Alocado de 600001 até 639999
+08/06/2020 22:31:11: Processo 3 escreveu 1000 na posição 600002
+08/06/2020 22:31:11: Processo 3 escreveu 0001 na posição 639998
+08/06/2020 22:31:11: Processo 3 encerrado.
+08/06/2020 22:31:11: Criado processo 4, com 60000kb. Alocado de 640001 até 699999
+08/06/2020 22:31:11: Processo 4 escreveu 1000 na posição 640002
+08/06/2020 22:31:11: Processo 4 escreveu 0001 na posição 699998
+08/06/2020 22:31:11: Processo 4 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 5, com 10000kb. Alocado de 700001 até 709999
+08/06/2020 22:31:11: Processo 5 escreveu 1000 na posição 700002
+08/06/2020 22:31:11: Processo 5 escreveu 0001 na posição 709998
+08/06/2020 22:31:11: Processo 5 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 6, com 90000kb. Alocado de 710001 até 799999
+08/06/2020 22:31:11: Processo 6 escreveu 1000 na posição 710002
+08/06/2020 22:31:11: Processo 6 escreveu 0001 na posição 799998
+08/06/2020 22:31:11: Processo 6 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 7, com 80000kb. Alocado de 800001 até 879999
+08/06/2020 22:31:11: Processo 7 escreveu 1111 na posição 800002
+08/06/2020 22:31:11: Processo 7 escreveu 0001 na posição 800003
+08/06/2020 22:31:11: Processo 7 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 8, com 20000kb. Alocado de 880001 até 899999
+08/06/2020 22:31:11: Processo 8 escreveu 1000 na posição 880002
+08/06/2020 22:31:11: Processo 8 escreveu 0001 na posição 899998
+08/06/2020 22:31:11: Processo 8 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 9, com 30000kb. Alocado de 900001 até 929999
+08/06/2020 22:31:11: Processo 9 escreveu 1000 na posição 900002
+08/06/2020 22:31:11: Processo 9 escreveu 0001 na posição 929998
+08/06/2020 22:31:11: Processo 9 irá interagir com um ES.
+08/06/2020 22:31:11: Criado processo 10, com 70000kb. Alocado de 930001 até 999999
+08/06/2020 22:31:11: Processo 10 escreveu 1000 na posição 930002
+08/06/2020 22:31:11: Processo 10 escreveu 0001 na posição 999998
+08/06/2020 22:31:11: Processo 10 encerrado.
+08/06/2020 22:31:18: Criado processo 11, com 10000kb. Alocado de 600001 até 619999 utilizando lacuna do processo 3
+08/06/2020 22:31:18: Processo 11 escreveu 1000 na posição 600002
+08/06/2020 22:31:18: Processo 11 escreveu 0001 na posição 609998
+08/06/2020 22:31:18: Processo 11 escreveu 1111 na posição 600501
+08/06/2020 22:31:18: Processo 11 irá interagir com um ES.
+08/06/2020 22:31:18: Criado processo 12, com 40000kb. Alocado de 550001 até 599999 utilizando lacuna do processo 2
+08/06/2020 22:31:18: Processo 12 leu na posição 550002
+08/06/2020 22:31:18: Processo 12 escreveu 1000 na posição 550002
+08/06/2020 22:31:18: Processo 12 escreveu 0001 na posição 589998
+08/06/2020 22:31:18: Processo 12 irá interagir com um ES.
+08/06/2020 22:31:18: Criado processo 13, com 30000kb. Alocado de 620001 até 639999 utilizando lacuna do processo 0
+08/06/2020 22:31:18: Processo 13 escreveu 1000 na posição 620002
+08/06/2020 22:31:18: Processo 13 encerrado devido acesso indevido de memória. Tentou acessar posição 649998

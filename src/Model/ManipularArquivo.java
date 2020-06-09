@@ -83,9 +83,6 @@ public class ManipularArquivo {
                 listProcessos.add(newProcesso);
                 linha = bf.readLine();
             }
-                
-                GerenciaMemoria gereMemoria = new GerenciaMemoria();
-                gereMemoria.organizaMemoria();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Problema com a leitura do arquivo txt, ex!");
             System.out.println(ex);
