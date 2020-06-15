@@ -320,7 +320,10 @@ public class SelecaoArquivos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Arquivo processado!");
                 
             }else if(jRBCircular.isSelected()){
-                JOptionPane.showMessageDialog(null, "Adicionar modo CIRCULAR - Cicero");
+                Model.CircularFit circularFit = new Model.CircularFit();
+                memoriaRAM = circularFit.gerenciaCircular(memoriaRAM, novosProcessos);
+             
+                JOptionPane.showMessageDialog(this, "Arquivo processado!");
             }else{
                 JOptionPane.showMessageDialog(null, "Selecione um modo de gerenciamente de memória.");
             }
