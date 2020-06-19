@@ -49,7 +49,7 @@ public class Processo {
                     posicao = posicao + this.inicioMemoriaAlocada;
                     
                     if((posicao >= this.inicioMemoriaAlocada) && //Verifica se a interação do processo esta dentro da memoria que foi alocada para ele.
-                        (posicao <= (this.fimMemoriaAlocada + 9999))){
+                        (posicao <= (this.fimMemoriaAlocada))){
                         maniPu.salvarDadosLog(2, "Processo "+this.id+" escreveu "+escrita+
                         " na posição "+posicao);
                     }else{
@@ -65,7 +65,7 @@ public class Processo {
                     posicao = posicao + this.inicioMemoriaAlocada;
                     
                     if((posicao >= this.inicioMemoriaAlocada) && //Verifica se a interação do processo esta dentro da memoria que foi alocada para ele.
-                        (posicao <= (this.fimMemoriaAlocada + 9999))){
+                        (posicao <= (this.fimMemoriaAlocada))){
                         maniPu.salvarDadosLog(2, "Processo "+this.id+" leu na posição "+posicao);
                     }else{
                         maniPu.salvarDadosLog(2, "Processo "+this.id+" encerrado devido acesso indevido de memória. "

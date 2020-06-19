@@ -48,7 +48,7 @@ public class BestFit {
                 if(newProcesso.getQtdMemoriaSolicitada() == memoriaRam.get(processoExcluido).getQtdMemoriaSolicitada()){
                     maniArq.salvarDadosLog(1, "Criado processo "+newProcesso.getId()+", com "+newProcesso.getQtdMemoriaSolicitada()+"kb."
                 + " Alocado de "+memoriaRam.get(processoExcluido).getInicioMemoriaAlocada()+" até "
-                +(memoriaRam.get(processoExcluido).getFimMemoriaAlocada() + 9998)+" utilizando lacuna do processo "+memoriaRam.get(processoExcluido).getId());
+                +(memoriaRam.get(processoExcluido).getFimMemoriaAlocada())+" utilizando lacuna do processo "+memoriaRam.get(processoExcluido).getId());
 
                     memoriaRam.get(processoExcluido).setId(newProcesso.getId());
                     memoriaRam.get(processoExcluido).setOperacao(novosProcessos.get(i).getOperacao());
@@ -61,17 +61,17 @@ public class BestFit {
                         if(k == processoExcluido){
                             
                             Processo novoProcessoParaAlocar = new Processo(newProcesso.getId(), newProcesso.getQtdMemoriaSolicitada() 
-                                    , processoMemoria.getInicioMemoriaAlocada(), (processoMemoria.getInicioMemoriaAlocada()+newProcesso.getQtdMemoriaSolicitada())
+                                    , processoMemoria.getInicioMemoriaAlocada(), (processoMemoria.getInicioMemoriaAlocada()+(newProcesso.getQtdMemoriaSolicitada()+9999))
                                     , novosProcessos.get(i).getOperacao());
                             
                             maniArq.salvarDadosLog(1, "Criado processo "+novoProcessoParaAlocar.getId()+", com "+novoProcessoParaAlocar.getQtdMemoriaSolicitada()+"kb."
-                            + " Alocado de "+novoProcessoParaAlocar.getInicioMemoriaAlocada()+" até "+(novoProcessoParaAlocar.getFimMemoriaAlocada() + 9998)+" utilizando "
+                            + " Alocado de "+novoProcessoParaAlocar.getInicioMemoriaAlocada()+" até "+(novoProcessoParaAlocar.getFimMemoriaAlocada())+" utilizando "
                                     + "lacuna do processo "+ processoMemoria.getId());
                             
                             novoProcessoParaAlocar.gerenciaProcesso();
                             
-                            Processo lacunaDoProcessoAntigo = new Processo(0, ( processoMemoria.getQtdMemoriaSolicitada() - novoProcessoParaAlocar.getQtdMemoriaSolicitada())
-                                    , (novoProcessoParaAlocar.getFimMemoriaAlocada() + 10000), processoMemoria.getFimMemoriaAlocada(), null);
+                            Processo lacunaDoProcessoAntigo = new Processo(0, (processoMemoria.getQtdMemoriaSolicitada() - novoProcessoParaAlocar.getQtdMemoriaSolicitada())
+                                    , (novoProcessoParaAlocar.getFimMemoriaAlocada() + 1), processoMemoria.getFimMemoriaAlocada(), null);
                             lacunaDoProcessoAntigo.finalizaProcesso();
                             
                             for (int l = 0; l < memoriaRam.size(); l++) {

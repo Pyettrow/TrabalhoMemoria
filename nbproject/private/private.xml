@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/View/SelecaoArquivos.java</file>
-            <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/Model/ManipularArquivo.java</file>
-            <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/Model/Processo.java</file>
             <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/Model/BestFit.java</file>
+            <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/Model/ManipularArquivo.java</file>
             <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/Model/WorstFit.java</file>
-            <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/Model/GerenciaMemoria.java</file>
+            <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/Model/Processo.java</file>
+            <file>file:/C:/Users/William/Documents/NetBeansProjects/TrabalhoMemoria/src/View/SelecaoArquivos.java</file>
         </group>
     </open-files>
 </project-private>
