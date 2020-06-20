@@ -59,7 +59,7 @@ public class CircularFit {
                         if (k == processoExcluido) {
 
                             Processo novoProcessoParaAlocar = new Processo(newProcesso.getId(), newProcesso.getQtdMemoriaSolicitada(),
-                                     processoMemoria.getInicioMemoriaAlocada(), (processoMemoria.getInicioMemoriaAlocada() + newProcesso.getQtdMemoriaSolicitada()),
+                                     processoMemoria.getInicioMemoriaAlocada(), (processoMemoria.getInicioMemoriaAlocada() + (newProcesso.getQtdMemoriaSolicitada() - 1)),
                                      novosProcessos.get(i).getOperacao());
 
                             maniArq.salvarDadosLog(1, "Criado processo " + novoProcessoParaAlocar.getId() + ", com " + novoProcessoParaAlocar.getQtdMemoriaSolicitada() + "kb."
@@ -69,7 +69,7 @@ public class CircularFit {
                             novoProcessoParaAlocar.gerenciaProcesso();
 
                             Processo lacunaDoProcessoAntigo = new Processo(processoMemoria.getId(), (processoMemoria.getQtdMemoriaSolicitada() - novoProcessoParaAlocar.getQtdMemoriaSolicitada()),
-                                     (novoProcessoParaAlocar.getFimMemoriaAlocada()), processoMemoria.getFimMemoriaAlocada(), null);
+                                     (novoProcessoParaAlocar.getFimMemoriaAlocada() + 1), processoMemoria.getFimMemoriaAlocada(), null);
                             lacunaDoProcessoAntigo.finalizaProcesso();
 
                             for (int l = 0; l < memoriaRam.size(); l++) {
