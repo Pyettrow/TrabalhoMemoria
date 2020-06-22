@@ -102,15 +102,16 @@ public class ManipularArquivo {
             if(opcao == 1){
                 for (int i = 0; i < 50; i++) {
                     fw.write("X\r\n");
-                }
+                }                
             }else if(opcao == 2){
                 long memoria = 0;
                 if(newProcesso != null){
-                    while(memoria < newProcesso.getQtdMemoriaSolicitada()){
+                    memoria += newProcesso.getInicioMemoriaAlocada();
+                    while(memoria <= newProcesso.getFimMemoriaAlocada()){                        
                         if(newProcesso.getFinalizado() == true){
-                            fw.write("--------\r\n");
+                            fw.write(memoria+" --------\r\n");
                         }else{
-                            fw.write("10000 - "+newProcesso.getId()+"\r\n");
+                            fw.write(memoria+" - "+newProcesso.getId()+"\r\n");
                         }
                         memoria += 10000;
                     }

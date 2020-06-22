@@ -61,7 +61,7 @@ public class BestFit {
                         if(k == processoExcluido){
                             
                             Processo novoProcessoParaAlocar = new Processo(newProcesso.getId(), newProcesso.getQtdMemoriaSolicitada() 
-                                    , processoMemoria.getInicioMemoriaAlocada(), (processoMemoria.getInicioMemoriaAlocada()+(newProcesso.getQtdMemoriaSolicitada()+9999))
+                                    , processoMemoria.getInicioMemoriaAlocada(), (processoMemoria.getInicioMemoriaAlocada()+(newProcesso.getQtdMemoriaSolicitada()-1))
                                     , novosProcessos.get(i).getOperacao());
                             
                             maniArq.salvarDadosLog(1, "Criado processo "+novoProcessoParaAlocar.getId()+", com "+novoProcessoParaAlocar.getQtdMemoriaSolicitada()+"kb."
