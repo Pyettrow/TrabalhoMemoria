@@ -70,7 +70,7 @@ public class BestFit {
                             
                             novoProcessoParaAlocar.gerenciaProcesso();
                             
-                            Processo lacunaDoProcessoAntigo = new Processo(0, (processoMemoria.getQtdMemoriaSolicitada() - novoProcessoParaAlocar.getQtdMemoriaSolicitada())
+                            Processo lacunaDoProcessoAntigo = new Processo(processoMemoria.getId(), (processoMemoria.getQtdMemoriaSolicitada() - novoProcessoParaAlocar.getQtdMemoriaSolicitada())
                                     , (novoProcessoParaAlocar.getFimMemoriaAlocada() + 1), processoMemoria.getFimMemoriaAlocada(), null);
                             lacunaDoProcessoAntigo.finalizaProcesso();
                             
